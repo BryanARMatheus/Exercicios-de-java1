@@ -44,9 +44,9 @@ public class TestaClasse extends Objetos{
 
 					switch (opção2) {
 					case 1:
-						System.out.println(navio1.getNome());
-						System.out.println(navio1.getClasse());
-						System.out.println(navio1.getAnoDeConstrução());
+						System.out.println("Nome: " + navio1.getNome());
+						System.out.println("Classe: " + navio1.getClasse());
+						System.out.println("Ano de construção: " + navio1.getAnoDeConstrução());
 						break;
 					case 2: navio1.navegar();
 					break;
@@ -71,9 +71,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.println(elemento1.getTipo());
-						System.out.println(elemento1.getGrau());
-						System.out.println(elemento1.getFoco());
+						System.out.println("Tipo: " + elemento1.getTipo());
+						System.out.println("Grau: " + elemento1.getGrau());
+						System.out.println("Foco: " + elemento1.getFoco());
 						break;
 					case 2: elemento1.imbuir();
 					break;
@@ -127,9 +127,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(musica1.getNome());
-						System.out.print(musica1.getTamanho());
-						System.out.print(musica1.getArtista());
+						System.out.println("Nome: " + musica1.getNome());
+						System.out.println("Segundos: " + musica1.getTamanho() + "s");
+						System.out.println("Artista: " + musica1.getArtista());
 						String esperar = input.next();
 						break;
 					case 2: 
@@ -162,9 +162,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(jogo1.getNome());
-						System.out.print(jogo1.getGenero());
-						System.out.print(jogo1.getTema());
+						System.out.println("Nome: " + jogo1.getNome());
+						System.out.println("Gênero: " + jogo1.getGenero());
+						System.out.println("Têma: " + jogo1.getTema());
 						break;
 					case 2: jogo1.jogar();
 					break;
@@ -192,9 +192,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(gato1.getNome());
-						System.out.print(gato1.getRaça());
-						System.out.print(gato1.getIdade());
+						System.out.println("Nome: " + gato1.getNome());
+						System.out.println("Raça: " + gato1.getRaça());
+						System.out.println("Idade: " + gato1.getIdade());
 						break;
 					case 2: gato1.andar();
 					break;
@@ -219,9 +219,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(raposa1.getRaça());
-						System.out.print(raposa1.getHabitat());
-						System.out.print(raposa1.getCor());
+						System.out.println("Raça: " + raposa1.getRaça());
+						System.out.println("Habitat: " + raposa1.getHabitat());
+						System.out.println("Cor: " + raposa1.getCor());
 						break;
 					case 2: raposa1.caçar();
 					break;
@@ -246,9 +246,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(metal1.getNome());
-						System.out.print(metal1.getNumeroAtomico());
-						System.out.print(metal1.getDensidade());
+						System.out.println("Nome: " + metal1.getNome());
+						System.out.println("Numero atômico: " + metal1.getNumeroAtomico());
+						System.out.println("Densidade: " + metal1.getDensidade());
 						break;
 					case 2: metal1.fusionar();
 					break;
@@ -272,9 +272,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(arte1.getMetodoDesenho());
-						System.out.print(arte1.getTipo());
-						System.out.print(arte1.getInstrumentoDesenho());
+						System.out.println("Metodo de desenho: " + arte1.getMetodoDesenho());
+						System.out.println("Tipo: " + arte1.getTipo());
+						System.out.println("Instrumento de desenho: " + arte1.getInstrumentoDesenho());
 						break;
 					case 2: arte1.desenhar();
 					break;
@@ -298,9 +298,9 @@ public class TestaClasse extends Objetos{
 					switch (opção2) {
 
 					case 1:
-						System.out.print(heroi1.getAtaque());
-						System.out.print(heroi1.getDefesa());
-						System.out.print(heroi1.getVida());
+						System.out.println("Ataque: " + heroi1.getAtaque());
+						System.out.println("Defesa: " + heroi1.getDefesa());
+						System.out.println("Vida: " + heroi1.getVida());
 						break;
 					case 2: heroi1.atacar();
 					break;
