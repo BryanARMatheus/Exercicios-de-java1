@@ -10,7 +10,7 @@ public class Objetos {
 	static Monstro monstro1 = new Monstro("Argoradon", "Dragão", 86);
 	
 	static Musica musica1 = new Musica("HUG AND KILL.wav", 218, "Kobaryo - ");
-	static Musica musica2 = new Musica("_1NF3S__0N_.wav", 293, "DM DOKURO - ");
+	static Musica musica2 = new Musica("_1NF3S _ _0N_.wav", 293, "DM DOKURO - ");
 	static Musica musica3 = new Musica("Sledge.wav", 205, "Dance with the Dead - ");
 	
 	static Jogo jogo1 = new Jogo("Rain world", "Aventura", "Distópico");
