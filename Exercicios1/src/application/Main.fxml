@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lucida Console;" text="Menu de objetos" textAlignment="CENTER">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <VBox layoutX="14.0" layoutY="142.0" prefHeight="646.0" prefWidth="500.0">
+         <children>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarNavio" onMouseEntered="#descriçãoNavio" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="637.0" text="Navio" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarElemento" onMouseEntered="#descriçãoElemento" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="653.0" text="Elemento" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarMonstro" onMouseEntered="#descriçãoMonstro" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="719.0" text="Monstro" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarMusica" onMouseEntered="#descriçãoMusica" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="674.0" text="Música" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarJogo" onMouseEntered="#descriçãoJogo" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="530.0" text="Jogo" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarGato" onMouseEntered="#descriçãoGato" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="540.0" text="Gato" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarRaposa" onMouseEntered="#descriçãoRaposa" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="620.0" text="Raposa" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarMetal" onMouseEntered="#descriçãoMetal" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="531.0" text="Metal de transição" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#mudarArte" onMouseEntered="#descriçãoArte" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="540.0" text="Arte" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarHeroi" onMouseEntered="#descriçãoHeroi" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="526.0" text="Heroí" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="752.0" layoutY="166.0" prefHeight="582.0" prefWidth="344.0">
+         <children>
+            <Label fx:id="TituloInformação" alignment="CENTER" contentDisplay="CENTER" prefHeight="111.0" prefWidth="350.0" text="Bem vindo" textAlignment="CENTER">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="ImagemInformação" fitHeight="232.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="DescriçãoInformação" prefHeight="255.0" prefWidth="344.0" text="Informações cruciais aparecerão aqui" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
