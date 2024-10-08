@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.Node;
 
-public class Controller extends Objetos{
+public class Controller extends Main{
 	
 	private Stage stage;
 	private Scene scene;
@@ -25,10 +28,27 @@ public class Controller extends Objetos{
 	private ImageView ImagemInformação;
 	@FXML
 	private Label DescriçãoInformação;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
+	
+	String css = this.getClass().getResource("application.css").toExternalForm();
+	
+	Transition slideIn = new Transition() {
+	    {
+	        setCycleDuration(Duration.seconds(1));
+	    }
+
+	    @Override
+	    protected void interpolate(double progress) {
+	        VboxOpcoes.setLayoutX(VboxOpcoes.getLayoutX() + (1 - progress) * 100);
+	        VboxInformação.setLayoutX(VboxInformação.getLayoutX() + (1 - progress) * 100);
+	    }
+	};
 	
 	public void voltarMenu(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -39,6 +59,7 @@ public class Controller extends Objetos{
 	public void mudarNavio(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Navio.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -47,6 +68,7 @@ public class Controller extends Objetos{
 	public void mudarElemento(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Elemento.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -55,6 +77,7 @@ public class Controller extends Objetos{
 	public void mudarMonstro(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Monstro.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -63,6 +86,7 @@ public class Controller extends Objetos{
 	public void mudarMusica(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Musica.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -71,6 +95,7 @@ public class Controller extends Objetos{
 	public void mudarJogo(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Jogo.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -79,6 +104,7 @@ public class Controller extends Objetos{
 	public void mudarGato(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Gato.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -87,6 +113,7 @@ public class Controller extends Objetos{
 	public void mudarRaposa(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Raposa.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -95,6 +122,7 @@ public class Controller extends Objetos{
 	public void mudarMetal(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("MetalTransição.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -103,6 +131,7 @@ public class Controller extends Objetos{
 	public void mudarArte(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Arte.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
@@ -111,6 +140,7 @@ public class Controller extends Objetos{
 	public void mudarHeroi(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Heroi.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene.getStylesheets().add(css);
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();

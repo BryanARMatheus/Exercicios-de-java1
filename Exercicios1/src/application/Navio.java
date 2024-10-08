@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class Navio extends Controller implements Initializable{
 	private String nome;
@@ -23,6 +24,8 @@ public class Navio extends Controller implements Initializable{
 	private Label DescriçãoInformação;
 	@FXML
 	private RadioButton Bismark, Deutschland;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

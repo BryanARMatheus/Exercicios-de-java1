@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class Arte extends Controller{
 	
@@ -17,6 +18,8 @@ public class Arte extends Controller{
 	private ImageView ImagemInformação;
 	@FXML
 	private Label DescriçãoInformação;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
 	
 	public void desenhar(ActionEvent e){
 		TituloInformação.setText("Desenhar");

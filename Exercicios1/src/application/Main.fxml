@@ -11,12 +11,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lucida Console;" text="Menu de objetos" textAlignment="CENTER">
+      <Text fx:id="menuLabel" layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lucida Console;" text="Menu de objetos" textAlignment="CENTER">
          <font>
             <Font size="96.0" />
          </font>
       </Text>
-      <VBox layoutX="14.0" layoutY="142.0" prefHeight="646.0" prefWidth="500.0">
+      <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="646.0" prefWidth="500.0">
          <children>
             <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#mudarNavio" onMouseEntered="#descriçãoNavio" onMouseExited="#descriçãoMenu" prefHeight="63.0" prefWidth="637.0" text="Navio" textAlignment="CENTER">
                <font>
