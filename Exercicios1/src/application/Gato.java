@@ -1,16 +1,12 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.ImageView;
 
-public class Gato extends Controller implements Initializable{
+public class Gato extends Controller {
 	private String raça;
 	private String nome;
 	private int idade;
@@ -24,13 +20,12 @@ public class Gato extends Controller implements Initializable{
 	@FXML
 	private RadioButton Estrôncio, Ytterbium;
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void check() {
 		if(Estrôncio.isSelected()) {
 			raça = "Maine Coon";
 			nome = "Estrôncio";
 			idade = 5;
-		} else {
+		} else if (Ytterbium.isSelected()) {
 			raça = "Angorá Turco";
 			nome = "Ytterbium";
 			idade = 11;
@@ -38,16 +33,19 @@ public class Gato extends Controller implements Initializable{
 	}
 	
 	public void andar(ActionEvent e) {
+		check();
 		TituloInformação.setText("Andar");
 		DescriçãoInformação.setText(nome + " está andando");
 	}
 	
 	public void comer(ActionEvent e) {
+		check();
 		TituloInformação.setText("Comer");
 		DescriçãoInformação.setText(nome + " começou a comer");
 	}
 	
 	public void dormir(ActionEvent e) {
+		check();
 		TituloInformação.setText("Andar");
 		DescriçãoInformação.setText("shhh " + nome + " está dormindo");
 	}

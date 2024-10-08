@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -59,15 +61,22 @@
             </Label>
          </children>
       </VBox>
-      <RadioButton fx:id="Bismark" layoutX="313.0" layoutY="37.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="263.0" selected="true" text="Bismark">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="Deutschland" layoutX="313.0" layoutY="84.0" mnemonicParsing="false" text="Deutschland">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </RadioButton>
+      <Group layoutX="313.0" layoutY="37.0">
+         <children>
+            <RadioButton fx:id="Bismark" mnemonicParsing="false" prefHeight="47.0" prefWidth="263.0" selected="true" text="Bismark">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="Navios" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Deutschland" layoutY="47.0" mnemonicParsing="false" text="Deutschland" toggleGroup="$Navios">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </Group>
    </children>
 </AnchorPane>

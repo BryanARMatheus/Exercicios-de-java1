@@ -18,7 +18,7 @@ public class Raposa extends Controller{
 	@FXML
 	private Label DescriçãoInformação;
 	
-	public void caçar(ActionEvent e) {
+	public void cacar(ActionEvent e) {
 		TituloInformação.setText("Caçar");
 		DescriçãoInformação.setText("A raposa está caçando um coelho");
 	}

@@ -8,17 +8,16 @@ import java.util.TimerTask;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Musica extends Controller implements Initializable{
@@ -30,7 +29,7 @@ public class Musica extends Controller implements Initializable{
 	@FXML
 	private Pane menu;
 	@FXML
-	private Label musicaNome;
+	private Text musicaNome;
 	@FXML
 	private ImageView ImagemInformação;
 	@FXML
@@ -136,7 +135,7 @@ public class Musica extends Controller implements Initializable{
 			media = new Media(musicas.get(numeroMusica).toURI().toString());
 			mediaPlayer = new MediaPlayer(media);
 			
-			musicaNome.setText(musicas.get(numeroMusica).getName());
+			musicaNome.setText(musicas.get(1).getName());
 		}
 		tocar();
 	}
