@@ -26,6 +26,28 @@ public class Navio extends Controller implements Initializable{
 	private RadioButton Bismark, Deutschland;
 	@FXML
 	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Label menuLabel;
+	
+	public void check() {
+		if(Bismark.isSelected()) {
+			nome = "Bismark";
+			classe = "Couraçado";
+			anoDeConstrução = 1939;
+
+			TituloInformação.setText("Bismark");
+			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
+
+		} else if (Deutschland.isSelected()){
+			nome = "Deutschland";
+			classe = "Cruzador pesado";
+			anoDeConstrução = 1931;
+
+			TituloInformação.setText("Deutschland");
+			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
+
+		}
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -33,10 +55,18 @@ public class Navio extends Controller implements Initializable{
 			nome = "Bismark";
 			classe = "Couraçado";
 			anoDeConstrução = 1939;
-		} else {
+
+			TituloInformação.setText("Bismark");
+			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
+
+		} else if (Deutschland.isSelected()){
 			nome = "Deutschland";
 			classe = "Cruzador pesado";
 			anoDeConstrução = 1931;
+
+			TituloInformação.setText("Deutschland");
+			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
+
 		}
 	}
 	

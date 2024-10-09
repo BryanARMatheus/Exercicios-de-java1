@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class Monstro extends Controller{
 	
@@ -17,6 +18,10 @@ public class Monstro extends Controller{
 	private ImageView ImagemInformação;
 	@FXML
 	private Label DescriçãoInformação;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Label menuLabel;
 	
 	public void defender(ActionEvent e) {
 		TituloInformação.setText("Fusionar");

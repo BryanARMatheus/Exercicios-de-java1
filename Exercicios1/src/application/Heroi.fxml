@@ -7,16 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Heroi">
    <children>
-      <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lucida Console;" text="Heroí" textAlignment="CENTER">
-         <font>
-            <Font size="96.0" />
-         </font>
-      </Text>
-      <VBox layoutX="14.0" layoutY="142.0" prefHeight="606.0" prefWidth="500.0">
+      <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="606.0" prefWidth="500.0">
          <children>
             <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#atacar" prefHeight="77.0" prefWidth="648.0" text="Atacar" textAlignment="CENTER">
                <font>
@@ -43,7 +37,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
+      <VBox fx:id="VboxInformações" layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
          <children>
             <Label fx:id="TituloInformação" alignment="CENTER" contentDisplay="CENTER" prefHeight="111.0" prefWidth="350.0" text="Bem vindo" textAlignment="CENTER">
                <font>
@@ -58,5 +52,10 @@
             </Label>
          </children>
       </VBox>
+      <Label fx:id="menuLabel" layoutX="14.0" layoutY="14.0" text="Heroí">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -20,6 +20,8 @@ public class Arte extends Controller{
 	private Label DescriçãoInformação;
 	@FXML
 	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Label menuLabel;
 	
 	public void desenhar(ActionEvent e){
 		TituloInformação.setText("Desenhar");

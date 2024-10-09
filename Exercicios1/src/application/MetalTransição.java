@@ -4,12 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class MetalTransição extends Controller{
 	
-	private String nome;
-	private int numeroAtomico;
-	private float densidade;
+	private String nome = "Ósmio";
+	private int numeroAtomico = 76;
+	private float densidade = 22.59F;
 	
 	@FXML
 	private Label TituloInformação;
@@ -17,6 +18,10 @@ public class MetalTransição extends Controller{
 	private ImageView ImagemInformação;
 	@FXML
 	private Label DescriçãoInformação;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Label menuLabel;
 	
 	public void fusionar(ActionEvent e) {
 		TituloInformação.setText("Fusionar");

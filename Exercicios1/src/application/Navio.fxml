@@ -10,16 +10,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Navio">
    <children>
-      <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Lucida Console;" text="Navio" textAlignment="CENTER">
-         <font>
-            <Font size="96.0" />
-         </font>
-      </Text>
-      <VBox layoutX="14.0" layoutY="142.0" prefHeight="658.0" prefWidth="500.0">
+      <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="658.0" prefWidth="500.0">
          <children>
             <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#virar" prefHeight="77.0" prefWidth="751.0" text="Virar" textAlignment="CENTER">
                <font>
@@ -46,7 +40,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox layoutX="772.0" layoutY="186.0" prefHeight="582.0" prefWidth="344.0">
+      <VBox fx:id="VboxInformação" layoutX="772.0" layoutY="186.0" prefHeight="582.0" prefWidth="344.0">
          <children>
             <Label fx:id="TituloInformação" alignment="CENTER" contentDisplay="CENTER" prefHeight="111.0" prefWidth="350.0" text="Bem vindo" textAlignment="CENTER">
                <font>
@@ -63,7 +57,7 @@
       </VBox>
       <Group layoutX="313.0" layoutY="37.0">
          <children>
-            <RadioButton fx:id="Bismark" mnemonicParsing="false" prefHeight="47.0" prefWidth="263.0" selected="true" text="Bismark">
+            <RadioButton fx:id="Bismark" mnemonicParsing="false" onAction="#check" prefHeight="47.0" prefWidth="263.0" selected="true" text="Bismark">
                <font>
                   <Font size="32.0" />
                </font>
@@ -71,12 +65,17 @@
                   <ToggleGroup fx:id="Navios" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="Deutschland" layoutY="47.0" mnemonicParsing="false" text="Deutschland" toggleGroup="$Navios">
+            <RadioButton fx:id="Deutschland" layoutY="47.0" mnemonicParsing="false" onAction="#check" text="Deutschland" toggleGroup="$Navios">
                <font>
                   <Font size="32.0" />
                </font>
             </RadioButton>
          </children>
       </Group>
+      <Label fx:id="menuLabel" layoutX="14.0" layoutY="14.0" text="Navio">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

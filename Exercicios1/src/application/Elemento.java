@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 public class Elemento extends Controller implements Initializable{
 	
@@ -24,6 +25,10 @@ public class Elemento extends Controller implements Initializable{
 	private ChoiceBox<Integer> EscolhaGrau;
 	@FXML
 	private ChoiceBox<String> EscolhaFoco;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Label menuLabel;
 	
 	private String[] Etipo = {"Fogo","Água","Terra","Vento","Luz","Escuridão"};
 	private Integer[] Egrau = {1,2,3,4,5,6,7,8,9};

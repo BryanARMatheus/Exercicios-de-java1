@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
 
 public class Heroi extends Controller{
 	
@@ -17,6 +20,10 @@ public class Heroi extends Controller{
 	private ImageView ImagemInformação;
 	@FXML
 	private Label DescriçãoInformação;
+	@FXML
+	private VBox VboxOpcoes, VboxInformação;
+	@FXML
+	private Text menuLabel;
 	
 	public void atacar(ActionEvent e) {
 		TituloInformação.setText("Atacar");
