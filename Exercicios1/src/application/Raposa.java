@@ -1,8 +1,11 @@
 package application;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -23,7 +26,11 @@ public class Raposa extends Controller{
 	@FXML
 	private Label menuLabel;
 	
+	File raposaCacar = new File("D:/FATEC/Exercicios1/Imagens/raposaCacando.jpg");
+    Image raposaImage = new Image(raposaCacar.toURI().toString());
+    
 	public void cacar(ActionEvent e) {
+		ImagemInformação.setImage(raposaImage);
 		TituloInformação.setText("Caçar");
 		DescriçãoInformação.setText("A raposa está caçando um coelho");
 	}

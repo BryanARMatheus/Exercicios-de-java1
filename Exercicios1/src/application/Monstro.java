@@ -24,17 +24,17 @@ public class Monstro extends Controller{
 	private Label menuLabel;
 	
 	public void defender(ActionEvent e) {
-		TituloInformação.setText("Fusionar");
+		TituloInformação.setText("Defender");
 		DescriçãoInformação.setText("O monstro se defende do ataque");
 	}
 	
 	public void atacar(ActionEvent e) {
-		TituloInformação.setText("Fusionar");
+		TituloInformação.setText("Atacar");
 		DescriçãoInformação.setText("O monstro realiza um ataque fisico!");
 	}
 	
 	public void desviar(ActionEvent e) {
-		TituloInformação.setText("Fusionar");
+		TituloInformação.setText("Desviar");
 		DescriçãoInformação.setText("O monstro desvia do ataque");
 	}
 

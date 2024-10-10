@@ -2,7 +2,6 @@ package application;
 
 import java.io.IOException;
 
-import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.Node;
 
 public class Controller extends Main{
@@ -35,45 +33,17 @@ public class Controller extends Main{
 	
 	String css = this.getClass().getResource("application.css").toExternalForm();
 	
-	Transition slideIn = new Transition() {
-	    {
-	        setCycleDuration(Duration.seconds(1));
-	    }
-
-	    @Override
-	    protected void interpolate(double progress) {
-	        VboxOpcoes.setLayoutX(VboxOpcoes.getLayoutX() + (1 - progress) * 100);
-	        VboxInformação.setLayoutX(VboxInformação.getLayoutX() + (1 + progress) * 100);
-	    }
-	};
-	
 	public void voltarMenu(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
-		slideIn();
 		scene.getStylesheets().add(css);
 		TituloInformação.setText("Bem vindo");
 		DescriçãoInformação.setText("Informações cruciais apareceram aqui");
 	}
 	
-	private void slideIn() {
-		Transition slideIn = new Transition() {
-		    {
-		        setCycleDuration(Duration.seconds(1));
-		    }
-
-		    @Override
-		    protected void interpolate(double progress) {
-		        VboxOpcoes.setLayoutX(VboxOpcoes.getLayoutX() + (1 - progress) * 100);
-		        VboxInformação.setLayoutX(VboxInformação.getLayoutX() + (1 + progress) * 100);
-		    }
-		};
-		
-	}
-
 	public void mudarNavio(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Navio.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

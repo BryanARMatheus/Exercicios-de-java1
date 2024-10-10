@@ -141,13 +141,13 @@ public class Musica extends Controller implements Initializable{
 			media = new Media(musicas.get(numeroMusica).toURI().toString());
 			mediaPlayer = new MediaPlayer(media);
 			
-			musicaNome.setText(musicas.get(1).getName());
+			musicaNome.setText(musicas.get(numeroMusica).getName());
 		}
 		tocar();
 	}
 	
 	public void musicaAnterior() {
-if (numeroMusica < musicas.size() - 1) {
+		if (numeroMusica < musicas.size() && numeroMusica != 0) {
 			
 			numeroMusica--;
 			
@@ -211,6 +211,8 @@ if (numeroMusica < musicas.size() - 1) {
 	
 	@Override
 	public void voltarMenu(ActionEvent event) throws IOException{
+		pausar();
+		reiniciar();
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
