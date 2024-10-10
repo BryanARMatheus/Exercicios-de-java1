@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="800.0" fitWidth="1254.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Imagens/menu.jpg" />
+            <Image url="@../Imagens/menu.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="582.0" fitWidth="344.0" layoutX="762.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Imagens/bordaInformações.jpg" />
+            <Image url="@../Imagens/bordaInformações.jpg" />
          </image>
       </ImageView>
       <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="620.0" prefWidth="500.0">
@@ -48,14 +48,17 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox fx:id="VboxInformação" layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
+      <VBox fx:id="VboxInformação" alignment="CENTER" layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
          <children>
             <Label fx:id="TituloInformação" alignment="CENTER" contentDisplay="CENTER" prefHeight="111.0" prefWidth="350.0" text="Bem vindo" textAlignment="CENTER">
                <font>
                   <Font size="41.0" />
                </font>
             </Label>
-            <ImageView fx:id="ImagemInformação" fitHeight="232.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImagemInformação" fitHeight="215.0" fitWidth="323.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../Imagens/monstroDogao.jpg" />
+               </image></ImageView>
             <Label fx:id="DescriçãoInformação" prefHeight="255.0" prefWidth="344.0" text="Informações cruciais aparecerão aqui" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="31.0" />

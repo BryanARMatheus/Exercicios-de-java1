@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -34,6 +35,10 @@ public class Elemento extends Controller implements Initializable{
 	private Integer[] Egrau = {1,2,3,4,5,6,7,8,9};
 	private String[] Efoco = {"Ataque","Defesa","Cura","Suporte"};
 	
+	Image elementoImbuir = new Image(getClass().getResourceAsStream("/Imagens/elementoImbuir.jpg"));
+	Image elementoAtacar = new Image(getClass().getResourceAsStream("/Imagens/elementoAtacar.jpg"));
+	Image elementoInvocar = new Image(getClass().getResourceAsStream("/Imagens/elementoInvocar.jpg"));
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		EscolhaTipo.getItems().addAll(Etipo);
@@ -49,6 +54,7 @@ public class Elemento extends Controller implements Initializable{
 		tipo = EscolhaTipo.getValue();
 		
 		TituloInformação.setText("Imbuir");
+		ImagemInformação.setImage(elementoImbuir);
 		DescriçãoInformação.setText("Você imbui sua arma em " + tipo);
 	}
 	
@@ -57,6 +63,7 @@ public class Elemento extends Controller implements Initializable{
 		grau = EscolhaGrau.getValue();
 		
 		TituloInformação.setText("Evocar");
+		ImagemInformação.setImage(elementoInvocar);
 		DescriçãoInformação.setText("Você evoca o elemento " + tipo + " de grau " + grau);
 	}
 	
@@ -66,6 +73,7 @@ public class Elemento extends Controller implements Initializable{
 		foco = EscolhaFoco.getValue();
 		
 		TituloInformação.setText("Atacar");
+		ImagemInformação.setImage(elementoAtacar);
 		DescriçãoInformação.setText("Você invoca uma magia de " + tipo + " de grau " + grau + " focada em " + foco);
 	}
 

@@ -1,7 +1,5 @@
 package application;
 
-import java.io.File;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -26,22 +24,25 @@ public class Raposa extends Controller{
 	@FXML
 	private Label menuLabel;
 	
-	File raposaCacar = new File("D:/FATEC/Exercicios1/Imagens/raposaCacando.jpg");
-    Image raposaImage = new Image(raposaCacar.toURI().toString());
-    
+	Image raposaCacar = new Image(getClass().getResourceAsStream("/Imagens/raposaCacando.jpg"));
+	Image raposaCorrer = new Image(getClass().getResourceAsStream("/Imagens/raposaCorrer.jpg"));
+	Image raposaComunicar = new Image(getClass().getResourceAsStream("/Imagens/raposaComunica.jpg"));
+	
 	public void cacar(ActionEvent e) {
-		ImagemInformação.setImage(raposaImage);
 		TituloInformação.setText("Caçar");
+		ImagemInformação.setImage(raposaCacar);
 		DescriçãoInformação.setText("A raposa está caçando um coelho");
 	}
 	
 	public void correr(ActionEvent e) {
 		TituloInformação.setText("Correr");
+		ImagemInformação.setImage(raposaCorrer);
 		DescriçãoInformação.setText("A raposa está correndo!");
 	}
 	
 	public void comunicar(ActionEvent e) {
 		TituloInformação.setText("Comunicar");
+		ImagemInformação.setImage(raposaComunicar);
 		DescriçãoInformação.setText("As raposas se comunicam entre si");
 	}
 

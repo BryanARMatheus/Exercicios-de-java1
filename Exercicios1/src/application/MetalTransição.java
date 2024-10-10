@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -23,18 +24,25 @@ public class MetalTransição extends Controller{
 	@FXML
 	private Label menuLabel;
 	
+	Image metalFusionar = new Image(getClass().getResourceAsStream("/Imagens/metalFundindo.jpg"));
+	Image metalSolidificar = new Image(getClass().getResourceAsStream("/Imagens/metalSolido.jpg"));
+	Image metalOxidar = new Image(getClass().getResourceAsStream("/Imagens/metalOxidando.jpg"));
+	
 	public void fusionar(ActionEvent e) {
 		TituloInformação.setText("Fusionar");
+		ImagemInformação.setImage(metalFusionar);
 		DescriçãoInformação.setText(nome + " entra em processo de fusão");
 	}
 	
 	public void solidificar(ActionEvent e) {
 		TituloInformação.setText("Solidificar");
+		ImagemInformação.setImage(metalSolidificar);
 		DescriçãoInformação.setText(nome + " está se solidificando");
 	}
 	
 	public void oxidar(ActionEvent e) {
 		TituloInformação.setText("Oxidar");
+		ImagemInformação.setImage(metalOxidar);
 		DescriçãoInformação.setText(nome + " começa a oxidar");
 	}
 

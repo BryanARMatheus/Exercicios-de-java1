@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -23,18 +24,26 @@ public class Monstro extends Controller{
 	@FXML
 	private Label menuLabel;
 	
+	Image monstroDefender = new Image(getClass().getResourceAsStream("/Imagens/monstroDefendendo.jpg"));
+	Image monstroAtacar = new Image(getClass().getResourceAsStream("/Imagens/monstroAtaca.jpg"));
+	Image monstroDesviar = new Image(getClass().getResourceAsStream("/Imagens/monstroDesvia.jpg"));
+	
+	
 	public void defender(ActionEvent e) {
 		TituloInformação.setText("Defender");
+		ImagemInformação.setImage(monstroDefender);
 		DescriçãoInformação.setText("O monstro se defende do ataque");
 	}
 	
 	public void atacar(ActionEvent e) {
 		TituloInformação.setText("Atacar");
+		ImagemInformação.setImage(monstroAtacar);
 		DescriçãoInformação.setText("O monstro realiza um ataque fisico!");
 	}
 	
 	public void desviar(ActionEvent e) {
 		TituloInformação.setText("Desviar");
+		ImagemInformação.setImage(monstroDesviar);
 		DescriçãoInformação.setText("O monstro desvia do ataque");
 	}
 

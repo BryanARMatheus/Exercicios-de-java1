@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -29,6 +30,12 @@ public class Navio extends Controller implements Initializable{
 	@FXML
 	private Label menuLabel;
 	
+	Image barcoVirar = new Image(getClass().getResourceAsStream("/Imagens/virarBarco.jpg"));
+	Image barcoNavegar = new Image(getClass().getResourceAsStream("/Imagens/navegandoBarco.jpg"));
+	Image barcoAtirar = new Image(getClass().getResourceAsStream("/Imagens/atirarBarco.jpg"));
+	Image bismark = new Image(getClass().getResourceAsStream("/Imagens/Bismark.jpg"));
+	Image deutschland = new Image(getClass().getResourceAsStream("/Imagens/Deutschland.jpg"));
+	
 	public void check() {
 		if(Bismark.isSelected()) {
 			nome = "Bismark";
@@ -36,6 +43,7 @@ public class Navio extends Controller implements Initializable{
 			anoDeConstrução = 1939;
 
 			TituloInformação.setText("Bismark");
+			ImagemInformação.setImage(bismark);
 			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
 
 		} else if (Deutschland.isSelected()){
@@ -44,6 +52,7 @@ public class Navio extends Controller implements Initializable{
 			anoDeConstrução = 1931;
 
 			TituloInformação.setText("Deutschland");
+			ImagemInformação.setImage(deutschland);
 			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
 
 		}
@@ -72,16 +81,19 @@ public class Navio extends Controller implements Initializable{
 	
 	public void virar(ActionEvent e) {
 		TituloInformação.setText("Virar");
+		ImagemInformação.setImage(barcoVirar);
 		DescriçãoInformação.setText("Você muda a direção do navio");
 	}
 	
 	public void navegar(ActionEvent e) {
 		TituloInformação.setText("Navegar");
+		ImagemInformação.setImage(barcoNavegar);
 		DescriçãoInformação.setText("O navio começa a navegar");
 	}
 	
 	public void atirar(ActionEvent e) {
 		TituloInformação.setText("Atirar");
+		ImagemInformação.setImage(barcoAtirar);
 		DescriçãoInformação.setText("Você atira com as armas principais do navio!");
 	}
 

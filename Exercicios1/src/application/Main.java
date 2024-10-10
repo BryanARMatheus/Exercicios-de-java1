@@ -17,8 +17,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,1200,700);
 			
 			String css = this.getClass().getResource("application.css").toExternalForm();
-			scene.getStylesheets().add(css);
-			
+			scene.getStylesheets().add(css);			
 			
 			Image icone = new Image("icone.png");
 			stage.getIcons().add(icone);

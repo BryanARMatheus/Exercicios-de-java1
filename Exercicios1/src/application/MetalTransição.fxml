@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="800.0" fitWidth="1254.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Imagens/menu.jpg" />
+            <Image url="@../Imagens/menu.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="582.0" fitWidth="344.0" layoutX="762.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Imagens/bordaInformações.jpg" />
+            <Image url="@../Imagens/bordaInformações.jpg" />
          </image>
       </ImageView>
       <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="580.0" prefWidth="500.0">
@@ -65,7 +65,7 @@
       </VBox>
       <Label fx:id="menuLabel" layoutX="14.0" layoutY="14.0" text="Metais de transição">
          <font>
-            <Font size="96.0" />
+            <Font size="81.0" />
          </font>
       </Label>
    </children>

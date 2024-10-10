@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -29,6 +30,12 @@ public class Gato extends Controller implements Initializable{
 	@FXML
 	private Label menuLabel;
 	
+	Image gatoAndar = new Image(getClass().getResourceAsStream("/Imagens/gatoAndar.jpg"));
+	Image gatoComer = new Image(getClass().getResourceAsStream("/Imagens/gatoComer.jpg"));
+	Image gatoDormir = new Image(getClass().getResourceAsStream("/Imagens/gatoDormir.jpg"));
+	Image estroncio = new Image(getClass().getResourceAsStream("/Imagens/Estroncio.jpg"));
+	Image ytterbium = new Image(getClass().getResourceAsStream("/Imagens/Ytterbium.jpg"));
+	
 	public void check() {
 		if(Estrôncio.isSelected()) {
 			raça = "Maine Coon";
@@ -36,6 +43,7 @@ public class Gato extends Controller implements Initializable{
 			idade = 5;
 
 			TituloInformação.setText("Estrôncio");
+			ImagemInformação.setImage(estroncio);
 			DescriçãoInformação.setText("Raça: " + raça + "\nNome: " + nome + "\nIdade: " + idade);
 
 		} else if (Ytterbium.isSelected()) {
@@ -44,6 +52,7 @@ public class Gato extends Controller implements Initializable{
 			idade = 11;
 
 			TituloInformação.setText("Ytterbium");
+			ImagemInformação.setImage(ytterbium);
 			DescriçãoInformação.setText("Raça: " + raça + "\nNome: " + nome + "\nIdade: " + idade);
 
 		}
