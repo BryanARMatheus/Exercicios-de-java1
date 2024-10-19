@@ -50,14 +50,14 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <VBox fx:id="VboxInformação" layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
+      <VBox fx:id="VboxInformação" alignment="CENTER" layoutX="762.0" layoutY="176.0" prefHeight="582.0" prefWidth="344.0">
          <children>
             <Label fx:id="TituloInformação" alignment="CENTER" contentDisplay="CENTER" prefHeight="111.0" prefWidth="350.0" text="Bem vindo" textAlignment="CENTER">
                <font>
                   <Font size="41.0" />
                </font>
             </Label>
-            <ImageView fx:id="ImagemInformação" fitHeight="232.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImagemInformação" fitHeight="232.0" fitWidth="324.0" pickOnBounds="true" />
             <Label fx:id="DescriçãoInformação" prefHeight="255.0" prefWidth="344.0" text="Informações cruciais aparecerão aqui" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="31.0" />
