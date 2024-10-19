@@ -43,6 +43,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Pagina de Menu");
 		stage.show();
 		scene.getStylesheets().add(css);
 		TituloInformação.setText("Bem vindo");
@@ -55,6 +56,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Navio");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -64,6 +66,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Elemento");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -73,6 +76,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Monstro");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -82,6 +86,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("TakoPlayer");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -91,6 +96,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Jogo");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -100,6 +106,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Gato");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -109,6 +116,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Raposa");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -118,6 +126,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Metal de transição");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -127,6 +136,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Arte");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
@@ -136,6 +146,7 @@ public class Controller extends Main {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("Heroí");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
