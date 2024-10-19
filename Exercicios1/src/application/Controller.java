@@ -35,9 +35,8 @@ public class Controller extends Main {
 	
 	String css = this.getClass().getResource("application.css").toExternalForm();
 	
-	Image floppaMenu = new Image(getClass().getResourceAsStream("/Imagens/menuImage.jpg"));
-
 	
+	Image floppaMenu = new Image(getClass().getResourceAsStream("/Imagens/menuImage.jpg"));	
 	
 	public void voltarMenu(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));

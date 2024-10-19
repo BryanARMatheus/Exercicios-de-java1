@@ -30,9 +30,6 @@ public class Gato extends Controller implements Initializable{
 	@FXML
 	private Label menuLabel;
 	
-	Image gatoAndar = new Image(getClass().getResourceAsStream("/Imagens/gatoAndar.jpg"));
-	Image gatoComer = new Image(getClass().getResourceAsStream("/Imagens/gatoComer.jpg"));
-	Image gatoDormir = new Image(getClass().getResourceAsStream("/Imagens/gatoDormir.jpg"));
 	Image estroncio = new Image(getClass().getResourceAsStream("/Imagens/Estroncio.jpg"));
 	Image ytterbium = new Image(getClass().getResourceAsStream("/Imagens/Ytterbium.jpg"));
 	
@@ -57,45 +54,48 @@ public class Gato extends Controller implements Initializable{
 
 		}
 	}
-
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 		if(Estrôncio.isSelected()) {
-
 			raça = "Maine Coon";
 			nome = "Estrôncio";
 			idade = 5;
 
 			TituloInformação.setText("Estrôncio");
+			ImagemInformação.setImage(estroncio);
 			DescriçãoInformação.setText("Raça: " + raça + "\nNome: " + nome + "\nIdade: " + idade);
-		} else if (Ytterbium.isSelected()) {
 
+		} else if (Ytterbium.isSelected()) {
 			raça = "Angorá Turco";
 			nome = "Ytterbium";
 			idade = 11;
 
 			TituloInformação.setText("Ytterbium");
+			ImagemInformação.setImage(ytterbium);
 			DescriçãoInformação.setText("Raça: " + raça + "\nNome: " + nome + "\nIdade: " + idade);
-		}
 
+		}
 	}
 	
 	public void andar(ActionEvent e) {
-
+		Image gatoAndar = new Image(getClass().getResourceAsStream("/Imagens/gatoAndar.jpg"));
 		TituloInformação.setText("Andar");
+		ImagemInformação.setImage(gatoAndar);
 		DescriçãoInformação.setText(nome + " está andando");
 	}
 	
 	public void comer(ActionEvent e) {
-		
+		Image gatoComer = new Image(getClass().getResourceAsStream("/Imagens/gatoComer.jpg"));
 		TituloInformação.setText("Comer");
+		ImagemInformação.setImage(gatoComer);
 		DescriçãoInformação.setText(nome + " começou a comer");
 	}
 	
 	public void dormir(ActionEvent e) {
-		
+		Image gatoDormir = new Image(getClass().getResourceAsStream("/Imagens/gatoDormir.png"));
 		TituloInformação.setText("Andar");
+		ImagemInformação.setImage(gatoDormir);
 		DescriçãoInformação.setText("shhh " + nome + " está dormindo");
 	}
 
@@ -122,5 +122,6 @@ public class Gato extends Controller implements Initializable{
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
+
 
 }

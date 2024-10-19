@@ -25,7 +25,7 @@ public class Raposa extends Controller{
 	private Label menuLabel;
 	
 	Image raposaCacar = new Image(getClass().getResourceAsStream("/Imagens/raposaCacando.jpg"));
-	Image raposaCorrer = new Image(getClass().getResourceAsStream("/Imagens/raposaCorrer.jpg"));
+	Image raposaCorrer = new Image(getClass().getResourceAsStream("/Imagens/raposaCorrendo.jpg"));
 	Image raposaComunicar = new Image(getClass().getResourceAsStream("/Imagens/raposaComunica.jpg"));
 	
 	public void cacar(ActionEvent e) {

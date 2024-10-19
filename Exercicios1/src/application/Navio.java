@@ -30,9 +30,6 @@ public class Navio extends Controller implements Initializable{
 	@FXML
 	private Label menuLabel;
 	
-	Image barcoVirar = new Image(getClass().getResourceAsStream("/Imagens/virarBarco.jpg"));
-	Image barcoNavegar = new Image(getClass().getResourceAsStream("/Imagens/navegandoBarco.jpg"));
-	Image barcoAtirar = new Image(getClass().getResourceAsStream("/Imagens/atirarBarco.jpg"));
 	Image bismark = new Image(getClass().getResourceAsStream("/Imagens/Bismark.jpg"));
 	Image deutschland = new Image(getClass().getResourceAsStream("/Imagens/Deutschland.jpg"));
 	
@@ -66,6 +63,7 @@ public class Navio extends Controller implements Initializable{
 			anoDeConstrução = 1939;
 
 			TituloInformação.setText("Bismark");
+			ImagemInformação.setImage(bismark);
 			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
 
 		} else if (Deutschland.isSelected()){
@@ -74,24 +72,28 @@ public class Navio extends Controller implements Initializable{
 			anoDeConstrução = 1931;
 
 			TituloInformação.setText("Deutschland");
+			ImagemInformação.setImage(deutschland);
 			DescriçãoInformação.setText("Nome: " + nome + "\nClasse: " + classe + "\nAno De Construção: " + anoDeConstrução);
 
 		}
 	}
 	
 	public void virar(ActionEvent e) {
+		Image barcoVirar = new Image(getClass().getResourceAsStream("/Imagens/virarBarco.jpg"));
 		TituloInformação.setText("Virar");
 		ImagemInformação.setImage(barcoVirar);
 		DescriçãoInformação.setText("Você muda a direção do navio");
 	}
 	
 	public void navegar(ActionEvent e) {
+		Image barcoNavegar = new Image(getClass().getResourceAsStream("/Imagens/navioNavegando.jpg"));
 		TituloInformação.setText("Navegar");
 		ImagemInformação.setImage(barcoNavegar);
 		DescriçãoInformação.setText("O navio começa a navegar");
 	}
 	
 	public void atirar(ActionEvent e) {
+		Image barcoAtirar = new Image(getClass().getResourceAsStream("/Imagens/barcoAtirar.jpg"));
 		TituloInformação.setText("Atirar");
 		ImagemInformação.setImage(barcoAtirar);
 		DescriçãoInformação.setText("Você atira com as armas principais do navio!");

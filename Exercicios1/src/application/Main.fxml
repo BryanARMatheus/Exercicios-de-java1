@@ -85,7 +85,7 @@
                   <Font size="41.0" />
                </font>
             </Label>
-            <ImageView fx:id="ImagemInformação" fitHeight="248.0" fitWidth="327.0" pickOnBounds="true">
+            <ImageView fx:id="ImagemInformação" fitHeight="248.0" fitWidth="320.0" pickOnBounds="true">
                <image>
                   <Image url="@../Imagens/menuImage.jpg" />
                </image></ImageView>

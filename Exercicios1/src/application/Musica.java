@@ -211,8 +211,12 @@ public class Musica extends Controller implements Initializable{
 	
 	@Override
 	public void voltarMenu(ActionEvent event) throws IOException{
-		pausar();
-		reiniciar();
+		
+		if(this.timer != null) {
+			pausar();
+			reiniciar();
+		}
+		
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

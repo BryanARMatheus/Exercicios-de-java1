@@ -24,23 +24,23 @@ public class Arte extends Controller{
 	@FXML
 	private Label menuLabel;
 	
+	Image arteDesenhar = new Image(getClass().getResourceAsStream("/Imagens/desenhoDesenhado.jpg"));
+	Image arteColorir = new Image(getClass().getResourceAsStream("/Imagens/desenhoColor.jpg"));
+	Image arteApagar = new Image(getClass().getResourceAsStream("/Imagens/desenhoApagado.jpg"));
 	
 	public void desenhar(ActionEvent e){
-		Image arteDesenhar = new Image(getClass().getResourceAsStream("/Imagens/desenhoDesenhado.png"));
 		TituloInformação.setText("Desenhar");
 		ImagemInformação.setImage(arteDesenhar);
 		DescriçãoInformação.setText("Você desenha uma nova obra");
 	}
 	
 	public void colorir(ActionEvent e) {
-		Image arteColorir = new Image(getClass().getResourceAsStream("/Imagens/desenhoColor.png"));
 		TituloInformação.setText("Colorir");
 		ImagemInformação.setImage(arteColorir);
 		DescriçãoInformação.setText("Você adiciona cor ao seu desenho");
 	}
 	
 	public void apagar(ActionEvent e) {
-		Image arteApagar = new Image(getClass().getResourceAsStream("/Imagens/desenhadoApagado.png"));
 		TituloInformação.setText("Apagar");
 		ImagemInformação.setImage(arteApagar);
 		DescriçãoInformação.setText("Você identifica um erro no desenho e o apaga");
