@@ -1,1 +1,36 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+	/*-fx-background-color:  #2f2f2f;*/
+.button{
+	-fx-border-width: 0px;
+	-fx-text-fill: white;
+	-fx-background-color:  transparent;
+}
+
+.button:hover {
+    -fx-background-color: rgba(72, 72, 72, 0.7);
+}
+
+#musicaNome {
+    -fx-text-alignment: center;
+    -fx-fill: white;
+}
+
+.progress-bar {
+	-fx-accent: purple;
+	-fx-box-border: goldenrod;
+}
+
+#musicaAnchor{
+	-fx-background-color: black;
+}
+
+/* .root{
+	-fx-background-color:  #636363;
+}*/
+
+#menuLabel{
+	-fx-text-fill: white;
+}
+
+.label{
+	-fx-text-fill: white;
+}

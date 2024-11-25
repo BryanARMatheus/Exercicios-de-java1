@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Exercicios1</groupId>
+  <artifactId>Exercicios1</artifactId>
+  <version>0.0.1</version>
+  <name>E2</name>
+  <dependencies>
+ 	<dependency>
+    	<groupId>io.github.cdimascio</groupId>
+    	<artifactId>dotenv-java</artifactId>
+    	<version>3.0.0</version>
+	</dependency>
+  </dependencies>
+   <build>
+    <sourceDirectory>Exercicios1/src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>Exercicios1/src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>22</release>
+        </configuration>
+      </plugin>
+    </plugins>
+    
+  </build>
+</project>

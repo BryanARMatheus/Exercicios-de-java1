@@ -1,3 +1,9 @@
 
 .classpath
 .project
+/Exercicios1/.env
+/out/
+/target/
+/Exercicios1.iml
+.idea
+/bin/
