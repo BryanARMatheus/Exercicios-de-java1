@@ -21,7 +21,7 @@
             <Image url="@../Imagens/bordaInformações.jpg" />
          </image>
       </ImageView>
-      <VBox fx:id="VboxInformação" layoutX="14.0" layoutY="142.0" prefHeight="630.0" prefWidth="500.0">
+      <VBox fx:id="VboxOpcoes" layoutX="14.0" layoutY="142.0" prefHeight="630.0" prefWidth="500.0">
          <children>
             <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#desenhar" prefHeight="77.0" prefWidth="530.0" text="Desenhar" textAlignment="CENTER">
                <font>
