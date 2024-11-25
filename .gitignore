@@ -4,6 +4,7 @@
 /Exercicios1/.env
 /out/
 /target/
+/Exercicios1/target/
 /Exercicios1.iml
 .idea
-/bin/
+/Exercicios1/bin/
