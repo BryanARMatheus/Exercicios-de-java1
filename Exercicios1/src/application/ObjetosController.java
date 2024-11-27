@@ -1,6 +1,97 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import application.DatabaseConnection;
+import java.sql.*;
+
 public class ObjetosController {
+
+    Connection connection = null;
+    PreparedStatement statement = null;
+    ResultSet resultSet = null;
+
+    @FXML
+    private Accordion AccordionObjetos;
+
+    @FXML
+    private Button ButtonAdicionar;
+
+    @FXML
+    private Button ButtonDeletar;
+
+    @FXML
+    private Button ButtonModificar;
+
+    @FXML
+    private Button ButtonVoltar;
+
+    @FXML
+    private Label LabelInformacao1;
+
+    @FXML
+    private Label LabelInformacao2;
+
+    @FXML
+    private Label LabelInformacao3;
+
+    @FXML
+    private Label LabelNome;
+
+    @FXML
+    void abrirTelaAdicionar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void consultarObjetos(MouseEvent event) throws SQLException {
+        try {
+            String nomeObjeto = AccordionObjetos.getExpandedPane().getText();
+            connection = DatabaseConnection.getConnection(true);
+            String query = "SELECT nome FROM " + nomeObjeto;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String recordName = resultSet.getString("nome");
+
+                Button button = new Button(recordName);
+
+                //AccordionObjetos.getExpandedPane().;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+        }
+    }
+
+    @FXML
+    void deletarObjeto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void modificarObjeto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void voltarMenu(ActionEvent event) {
+
+    }
+
     //@FXML
     /*private void fillDatabase() {
         LoginDAO loginDAO = new LoginDAO();
