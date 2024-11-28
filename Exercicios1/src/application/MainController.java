@@ -36,8 +36,21 @@ public class MainController extends Main {
 	String css = this.getClass().getResource("application.css").toExternalForm();
 	
 	
-	Image floppaMenu = new Image(getClass().getResourceAsStream("/Imagens/menuImage.jpg"));	
-	
+	Image floppaMenu = new Image(getClass().getResourceAsStream("/Imagens/menuImage.jpg"));
+
+	@FXML
+	private void popularDatabase() {
+		MainDAO mainDAO = new MainDAO();
+		try {
+			MainDAO.executeSQLFromFile("/resources/squemaE2.sql");
+			MainDAO.executeSQLFromFile("/resources/dumpE2.sql");
+		} catch (Exception e) {
+			System.out.println("Erro ao executar consulta: " + e.getMessage());
+		}
+	}
+
+
+
 	public void voltarMenu(ActionEvent event) throws IOException{
 		root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

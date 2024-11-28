@@ -1,7 +1,12 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
-import io.github.cdimascio.dotenv.Dotenv;
+import java.util.stream.Collectors;
+
+import io.github.cdimascio.dotenv.Dotenv;;
 
 public class DatabaseConnection {
     static Dotenv dotenv = Dotenv.load();
@@ -11,6 +16,7 @@ public class DatabaseConnection {
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
     private static Connection connection = null;
+    private static Statement statement = null;
 
     public static Connection getConnection(boolean useDefaultSchema) throws SQLException {
         if (connection == null || connection.isClosed()) {
@@ -22,6 +28,7 @@ public class DatabaseConnection {
         }
         return connection;
     }
+
 
     public static ResultSet executeQuery(String sql, Object... params) throws SQLException {
         try {
