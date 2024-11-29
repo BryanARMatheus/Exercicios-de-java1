@@ -32,7 +32,6 @@ public class MainController extends Main {
 	private Label menuLabel;
 	
 	
-	
 	String css = this.getClass().getResource("application.css").toExternalForm();
 	
 	
@@ -160,6 +159,16 @@ public class MainController extends Main {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Heroí");
+		stage.show();
+		scene.getStylesheets().add(css);
+	}
+
+	public void mudarObjetos(ActionEvent event) throws IOException{
+		root = FXMLLoader.load(getClass().getResource("Objetos.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("Objetos");
 		stage.show();
 		scene.getStylesheets().add(css);
 	}
