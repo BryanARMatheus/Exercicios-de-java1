@@ -19,6 +19,16 @@ public class ObjetosController {
     PreparedStatement statement = null;
     ResultSet resultSet = null;
 
+    String objetoInformacoes1 = null;
+    String objetoInformacoes2 = null;
+    String objetoInformacoes3 = null;
+    String nomeColuna1 = null;
+    String nomeColuna2 = null;
+    String nomeColuna3 = null;
+
+    @FXML
+    TitledPane sqlObjetoNome = null;
+
     @FXML
     private Accordion AccordionObjetos;
 
@@ -81,6 +91,8 @@ public class ObjetosController {
                 connection = DatabaseConnection.getConnection(true);
                 String query = "SELECT * FROM " + nomeObjeto;
 
+                sqlObjetoNome = AccordionObjetos.getExpandedPane();
+
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
 
@@ -142,8 +154,28 @@ public class ObjetosController {
     }
 
     @FXML
-    void deletarObjeto(ActionEvent event) {
+    void deletarObjeto(ActionEvent event){
+        try{
+        connection = DatabaseConnection.getConnection(true);
+        String nomeObjeto = AccordionObjetos.getExpandedPane().getText().toLowerCase();
 
+        String queryDelete = "DELETE FROM " + nomeObjeto + " WHERE " + nomeColuna1 + " = " + objetoInformacoes1 + " AND " + nomeColuna2 + " = " + objetoInformacoes2 + " AND " + nomeColuna3 + " = " + objetoInformacoes3 + ";";
+        Statement stmDelete = connection.createStatement();
+        ResultSet rsDelete = statement.executeQuery(queryDelete);
+
+        consultarObjetos(sqlObjetoNome);
+
+        }catch(SQLException delEx){
+            throw new RuntimeException(delEx);
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException exe) {
+                System.out.println("Erro ao fechar recursos: " + exe.getMessage());
+            }
+        }
     }
 
     @FXML
@@ -203,6 +235,14 @@ public class ObjetosController {
             ResultSet rsBotao = stmBotao.executeQuery();
 
             while(rsBotao.next()) {
+                objetoInformacoes1 = rsBotao.getString(2);
+                objetoInformacoes2 = rsBotao.getString(3);
+                objetoInformacoes3 = rsBotao.getString(4);
+
+                nomeColuna1 = rsBotao.getMetaData().getColumnName(2);
+                nomeColuna2 = rsBotao.getMetaData().getColumnName(3);
+                nomeColuna3 = rsBotao.getMetaData().getColumnName(4);
+
                 LabelInformacao1.setText(rsBotao.getMetaData().getColumnName(2).substring(0, 1).toUpperCase() + rsBotao.getMetaData().getColumnName(2).substring(1).toLowerCase() + ": " + rsBotao.getString(2));
                 LabelInformacao2.setText(rsBotao.getMetaData().getColumnName(3).substring(0, 1).toUpperCase() + rsBotao.getMetaData().getColumnName(3).substring(1).toLowerCase() + ": " + rsBotao.getString(3));
                 LabelInformacao3.setText(rsBotao.getMetaData().getColumnName(4).substring(0, 1).toUpperCase() + rsBotao.getMetaData().getColumnName(4).substring(1).toLowerCase() + ": " + rsBotao.getString(4));
