@@ -142,7 +142,7 @@
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ButtonModificar" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#modificarObjeto" prefHeight="57.0" prefWidth="152.0" text="Modificar">
+                  <Button fx:id="ButtonModificar" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#modoDeEdicao" prefHeight="57.0" prefWidth="152.0" text="Modificar">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -150,7 +150,7 @@
                </children>
             </HBox>
          </children></VBox>
-      <Button fx:id="ButtonAdicionar" layoutX="1021.0" layoutY="31.0" minWidth="50.0" mnemonicParsing="false" onAction="#abrirTelaAdicionar" text="Adicionar">
+      <Button fx:id="ButtonAdicionar" layoutX="501.0" layoutY="56.0" minWidth="50.0" mnemonicParsing="false" onAction="#abrirTelaAdicionar" text="Adicionar">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
