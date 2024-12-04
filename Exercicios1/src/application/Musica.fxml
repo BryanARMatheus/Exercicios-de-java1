@@ -3,53 +3,62 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="musicaAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MusicaController">
    <children>
-      <Text fx:id="musicaNome" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tako player" wrappingWidth="1200.0">
+      <Text fx:id="musicaNome" layoutX="678.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tako player" textAlignment="CENTER" wrappingWidth="522.0">
          <font>
-            <Font size="78.0" />
+            <Font size="34.0" />
          </font>
       </Text>
-      <ButtonBar layoutX="-16.0" layoutY="466.0" prefHeight="81.0" prefWidth="1126.0">
+      <ButtonBar layoutX="678.0" layoutY="575.0" prefHeight="81.0" prefWidth="522.0">
          <buttons>
-            <Button fx:id="botãoReiniciar" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#reiniciar" text="Reiniciar" textAlignment="CENTER">
+            <Button fx:id="botãoVoltar" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#musicaAnterior" text="|&lt;" textAlignment="CENTER">
                <font>
-                  <Font size="38.0" />
-               </font>
-            </Button>
-            <Button fx:id="botãoVoltar" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#musicaAnterior" prefHeight="81.0" text="|&lt;" textAlignment="CENTER">
-               <font>
-                  <Font size="38.0" />
+                  <Font size="23.0" />
                </font>
             </Button>
             <Button fx:id="botãoPlay" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#tocar" text="Play" textAlignment="CENTER">
                <font>
-                  <Font size="38.0" />
+                  <Font size="23.0" />
                </font>
             </Button>
             <Button fx:id="botãoAvançar" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#proximaMusica" text="&gt;|" textAlignment="CENTER">
                <font>
-                  <Font size="38.0" />
+                  <Font size="23.0" />
                </font>
             </Button>
             <Button fx:id="botãoPause" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#pausar" text="Pausar" textAlignment="CENTER">
                <font>
-                  <Font size="38.0" />
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="botãoReiniciar" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#reiniciar" text="Reiniciar" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
                </font>
             </Button>
          </buttons>
       </ButtonBar>
-      <ProgressBar fx:id="tempoMusica" layoutX="224.0" layoutY="427.0" prefHeight="39.0" prefWidth="752.0" progress="0.0" />
-      <Slider fx:id="ajustarVolume" layoutX="886.0" layoutY="647.0" max="100.0" prefHeight="28.0" prefWidth="244.0" value="50.0" />
+      <ProgressBar fx:id="tempoMusica" layoutX="698.0" layoutY="536.0" prefHeight="39.0" prefWidth="503.0" progress="0.0" />
+      <Slider fx:id="ajustarVolume" layoutX="939.0" layoutY="656.0" max="100.0" prefHeight="28.0" prefWidth="244.0" value="50.0" />
       <Button alignment="CENTER" graphicTextGap="10.0" layoutX="455.0" layoutY="708.0" mnemonicParsing="false" onAction="#voltarMenu" text="Voltar ao menu" textAlignment="CENTER">
          <font>
             <Font size="38.0" />
          </font>
       </Button>
+      <ScrollPane layoutX="14.0" layoutY="58.0" prefHeight="517.0" prefWidth="405.0">
+         <content>
+            <VBox fx:id="VBoxListaMusicas" prefHeight="517.0" prefWidth="369.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fx:id="ImageViewMusicaThumb" fitHeight="300.0" fitWidth="300.0" layoutX="789.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

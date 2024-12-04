@@ -2,6 +2,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -9,28 +10,40 @@ import java.util.TimerTask;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.MapChangeListener;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.imageio.ImageIO;
+
 public class MusicaController extends MainController implements Initializable{
 	
 	private String nome;
 	private int tamanho;
 	private String artista;
+
+	Connection connection = null;
+	PreparedStatement statement = null;
+	ResultSet resultSet = null;
 	
 	@FXML
 	private Pane menu;
@@ -44,6 +57,10 @@ public class MusicaController extends MainController implements Initializable{
 	private Slider ajustarVolume;
 	@FXML
 	private ProgressBar tempoMusica;
+	@FXML
+	private ImageView ImageViewMusicaThumb;
+	@FXML
+	private VBox VBoxListaMusicas;
 	
 	private Media media;
 	private MediaPlayer mediaPlayer;
@@ -79,17 +96,166 @@ public class MusicaController extends MainController implements Initializable{
 		mediaPlayer = new MediaPlayer(media);
 		
 		musicaNome.setText(musicas.get(numeroMusica).getName());
-		
+
 		ajustarVolume.valueProperty().addListener(new ChangeListener<Number>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				
+
 				mediaPlayer.setVolume(ajustarVolume.getValue() * 0.01);
-				
+
 			}
-			
+
 		});
+		atualizarCapaMusica();
+		adicionarMusicasBanco();
+	}
+
+	public void atualizarCapaMusica() {
+
+		media.getMetadata().addListener((MapChangeListener<? super String, ? super Object>) (change) -> {
+			if (media.getMetadata().containsKey("image")) {
+
+				Image capa = (Image) media.getMetadata().get("image");
+
+				ImageViewMusicaThumb.setImage(capa);
+			} else {
+
+				ImageViewMusicaThumb.setImage(new Image(getClass().getResourceAsStream("/imagens/menuImage.png")));
+			}
+		});
+	}
+
+	@FXML
+	void adicionarMusicasBanco(){
+		try {
+		connection = DatabaseConnection.getConnection(true);
+		String query = "INSERT INTO musica (nome,segundos,artista,thumbnail,caminho_musica) VALUES (?,?,?,?,?);";
+
+		PreparedStatement stmInsert = connection.prepareStatement(query);
+
+		String nomeMusica = musicas.get(numeroMusica).getName();
+		double duracaoSegundos = mediaPlayer.getTotalDuration().toSeconds();
+
+
+		String artista = null;
+		String thumbnailPath = null;
+
+		if (media.getMetadata().containsKey("artist")) {
+			artista = (String) media.getMetadata().get("artist");
+		}
+
+		if (media.getMetadata().containsKey("image")) {
+			Image thumbnailImage = (Image) media.getMetadata().get("image");
+			File tempFile = new File("temp_thumbnail.png");
+			ImageIO.write(SwingFXUtils.fromFXImage(thumbnailImage, null), "png", tempFile);
+			thumbnailPath = tempFile.getAbsolutePath();
+		}
+
+		String caminhoMusica = musicas.get(numeroMusica).getAbsolutePath();
+
+		stmInsert.setString(1, nomeMusica);
+		stmInsert.setDouble(2, duracaoSegundos);
+		stmInsert.setString(3, artista);
+		stmInsert.setString(4, thumbnailPath);
+		stmInsert.setString(5, caminhoMusica);
+
+		stmInsert.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar recursos: " + e.getMessage());
+			}
+		}
+	}
+
+	@FXML
+	void criarBotao(TitledPane pane) throws SQLException {
+		for(File arquivo: arquivos) {
+		}
+		try {
+			VBoxListaMusicas.getChildren().clear();
+
+			connection = DatabaseConnection.getConnection(true);
+			String query = "SELECT * FROM musica;";
+
+
+			PreparedStatement stmDelete = connection.prepareStatement(query);
+
+			while (resultSet.next()) {
+
+				String buttonName = null;
+				String musicName = null;
+
+				buttonName = resultSet.getString("nome");
+				musicName = buttonName;
+
+				Button button = new Button(buttonName);
+				button.setPrefWidth(600);
+				button.setStyle(String.format("-fx-font-size: 22;"));
+				button.setAlignment(Pos.CENTER_LEFT);
+				button.setOnAction(event -> tocarBotao(button));
+
+				VBoxListaMusicas.setSpacing(10);
+				VBoxListaMusicas.setStyle(String.format("-fx-background-color: black;"));
+
+				VBoxListaMusicas.getChildren().add(button);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar recursos: " + e.getMessage());
+			}
+		}
+	}
+
+	void tocarBotao(Button button){
+		String nomeMusicaBotao = button.getText();
+
+		try {
+
+			connection = DatabaseConnection.getConnection(true);
+			String query = "SELECT * FROM musica WHERE nome = ?";
+
+
+			PreparedStatement stmTocar = connection.prepareStatement(query);
+
+			stmTocar.setString(1, nomeMusicaBotao);
+
+			stmTocar.executeQuery();
+
+			ResultSet resultSet = stmTocar.executeQuery(query);
+
+			media = new Media(resultSet.getString("caminho_musica"));
+			mediaPlayer = new MediaPlayer(media);
+
+			musicaNome.setText(nomeMusicaBotao);
+			ImageViewMusicaThumb.set(resultSet.getString("thumbnail"));
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if (resultSet != null) resultSet.close();
+				if (statement != null) statement.close();
+				if (connection != null) connection.close();
+			} catch (SQLException e) {
+				System.out.println("Erro ao fechar recursos: " + e.getMessage());
+			}
+		}
 	}
 	
 	//Place holder
@@ -98,6 +264,8 @@ public class MusicaController extends MainController implements Initializable{
 		tempoMusica();
 		mediaPlayer.setVolume(ajustarVolume.getValue() * 0.01);
 		mediaPlayer.play();
+
+		atualizarCapaMusica();
 		
 	}
 	
@@ -143,6 +311,8 @@ public class MusicaController extends MainController implements Initializable{
 			
 			musicaNome.setText(musicas.get(numeroMusica).getName());
 		}
+		atualizarCapaMusica();
+
 		tocar();
 	}
 	
@@ -176,6 +346,8 @@ public class MusicaController extends MainController implements Initializable{
 			
 			musicaNome.setText(musicas.get(numeroMusica).getName());
 		}
+		atualizarCapaMusica();
+
 		tocar();
 	}
 	
