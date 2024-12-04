@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdicionarObjetoController">
+   <children>
+      <Label fx:id="LabelComNomeObjeto" alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="72.0" prefWidth="372.0" text="Adicionar">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Button fx:id="ButtonAdicionarObjeto" layoutX="305.0" layoutY="353.0" mnemonicParsing="false" onAction="#adicionarObjeto" prefHeight="33.0" prefWidth="81.0" text="Adicionar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="TextFieldInformacao1" layoutX="14.0" layoutY="125.0" prefHeight="33.0" prefWidth="372.0" />
+      <TextField fx:id="TextFieldInformacao2" layoutX="14.0" layoutY="200.0" prefHeight="33.0" prefWidth="372.0" />
+      <TextField fx:id="TextFieldInformacao3" layoutX="14.0" layoutY="275.0" prefHeight="33.0" prefWidth="372.0" />
+   </children>
+</AnchorPane>

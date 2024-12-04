@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Objects;
+
+import static java.lang.Integer.parseInt;
 
 public class ObjetosController extends MainController{
 
@@ -24,12 +27,12 @@ public class ObjetosController extends MainController{
     PreparedStatement statement = null;
     ResultSet resultSet = null;
 
-    String objetoInformacoes1 = null;
-    String objetoInformacoes2 = null;
-    String objetoInformacoes3 = null;
-    String nomeColuna1 = null;
-    String nomeColuna2 = null;
-    String nomeColuna3 = null;
+    String objetoInformacoes1;
+    String objetoInformacoes2;
+    String objetoInformacoes3;
+    String nomeColuna1;
+    String nomeColuna2;
+    String nomeColuna3;
 
     @FXML
     TitledPane sqlObjetoNome = null;
@@ -91,13 +94,19 @@ public class ObjetosController extends MainController{
 
     @FXML
     void abrirTelaAdicionar(ActionEvent event) throws IOException {
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("AdicionarObjetoScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("AdicionarObjetoScreen.fxml")));
         root = loader.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Adicionar objeto");
-        stage.show();
+
+        String nomeObjeto = AccordionObjetos.getExpandedPane().getText().toLowerCase();
+
+        AdicionarObjetoController adicionarObjetoCtr = loader.getController();
+        adicionarObjetoCtr.passarInformacoes(nomeObjeto, nomeColuna1, nomeColuna2, nomeColuna3, sqlObjetoNome);
+
+        Stage adicionarstage = new Stage();
+        Scene adicionarscene = new Scene(root);
+        adicionarstage.setScene(adicionarscene);
+        adicionarstage.setTitle("Adicionar objeto");
+        adicionarstage.show();
     }
 
     @FXML
@@ -111,10 +120,15 @@ public class ObjetosController extends MainController{
                 connection = DatabaseConnection.getConnection(true);
                 String query = "SELECT * FROM " + nomeObjeto;
 
+
                 sqlObjetoNome = AccordionObjetos.getExpandedPane();
 
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
+
+                nomeColuna1 = resultSet.getMetaData().getColumnName(2);
+                nomeColuna2 = resultSet.getMetaData().getColumnName(3);
+                nomeColuna3 = resultSet.getMetaData().getColumnName(4);
 
                 while (resultSet.next()) {
 
@@ -179,11 +193,23 @@ public class ObjetosController extends MainController{
         connection = DatabaseConnection.getConnection(true);
         String nomeObjeto = AccordionObjetos.getExpandedPane().getText().toLowerCase();
 
-        String queryDelete = "DELETE FROM " + nomeObjeto + " WHERE " + nomeColuna1 + " = " + objetoInformacoes1
-                + " AND " + nomeColuna2 + " = " + objetoInformacoes2
-                + " AND " + nomeColuna3 + " = " + objetoInformacoes3 + ";";
-        Statement stmDelete = connection.createStatement();
-        ResultSet rsDelete = statement.executeQuery(queryDelete);
+        String queryDelete = "DELETE FROM " + nomeObjeto +
+                " WHERE " + nomeColuna1 + " = ?"
+                + " AND " + nomeColuna2 + " = ?"
+                + " AND " + nomeColuna3 + " = ?;";
+
+        PreparedStatement stmDelete = connection.prepareStatement(queryDelete);
+
+        String queryMetadate = "SELECT * FROM " + nomeObjeto + " WHERE 1 = 0";
+        Statement metaStmt = connection.createStatement();
+        ResultSet rsMeta = metaStmt.executeQuery(queryMetadate);
+        ResultSetMetaData metaData = rsMeta.getMetaData();
+
+        configurarPreparedStatement(stmDelete, metaData, 1, objetoInformacoes1);
+        configurarPreparedStatement(stmDelete, metaData, 2, objetoInformacoes2);
+        configurarPreparedStatement(stmDelete, metaData, 3, objetoInformacoes3);
+
+        stmDelete.executeUpdate();
 
         consultarObjetos(sqlObjetoNome);
 
@@ -212,6 +238,10 @@ public class ObjetosController extends MainController{
         TextFieldInformacao1.setPrefWidth(LabelInformacao1.getWidth());
         TextFieldInformacao2.setPrefWidth(LabelInformacao2.getWidth());
         TextFieldInformacao3.setPrefWidth(LabelInformacao3.getWidth());
+
+        addFocusListenerToTextField(TextFieldInformacao1);
+        addFocusListenerToTextField(TextFieldInformacao2);
+        addFocusListenerToTextField(TextFieldInformacao3);
 
         LabelInformacao1.setVisible(false);
         LabelInformacao2.setVisible(false);
@@ -310,17 +340,17 @@ public class ObjetosController extends MainController{
             switch (nomeObjeto) {
                 case "arte":
                     recordName = "id";
-                    id = Integer.parseInt(nome.substring(nome.length() - 1));
+                    id = parseInt(nome.substring(nome.length() - 1));
                     break;
 
                 case "elemento":
                     recordName = "id";
-                    id = Integer.parseInt(nome.substring(nome.length() - 1));
+                    id = parseInt(nome.substring(nome.length() - 1));
                     break;
 
                 case "heroi":
                     recordName = "id";
-                    id = Integer.parseInt(nome.substring(nome.length() - 1));
+                    id = parseInt(nome.substring(nome.length() - 1));
                     break;
 
                 case "raposa":
@@ -370,4 +400,46 @@ public class ObjetosController extends MainController{
         }
     }
 
+    void addFocusListenerToTextField(TextField textField) {
+        textField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (!newVal) {
+                String newValue = textField.getText();
+
+                if (newValue.isEmpty()) {
+                    textField.setText(textField.getPromptText());
+                } else {
+                    textField.setPromptText(newValue);
+                }
+            }
+        });
+    }
+
+    void configurarPreparedStatement(PreparedStatement stm, ResultSetMetaData metaData, int paramIndex, String value) throws SQLException {
+        int columnType = metaData.getColumnType(paramIndex + 1);
+
+        switch (columnType) {
+            case Types.INTEGER:
+            case Types.SMALLINT:
+            case Types.TINYINT:
+            case Types.BIGINT:
+                stm.setInt(paramIndex, Integer.parseInt(value));
+                break;
+            case Types.FLOAT:
+            case Types.DOUBLE:
+            case Types.DECIMAL:
+                stm.setDouble(paramIndex, Double.parseDouble(value));
+                break;
+            case Types.VARCHAR:
+            case Types.CHAR:
+            case Types.LONGVARCHAR:
+            case Types.NVARCHAR:
+                stm.setString(paramIndex, value);
+                break;
+            case Types.BOOLEAN:
+                stm.setBoolean(paramIndex, Boolean.parseBoolean(value));
+                break;
+            default:
+                stm.setObject(paramIndex, value);
+        }
+    }
 }
