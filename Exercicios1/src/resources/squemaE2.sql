@@ -73,6 +73,8 @@ CREATE TABLE `musica` (
 	`nome` VARCHAR(255) NOT NULL,
     `segundos` INTEGER,
     `artista` VARCHAR(255),
+    `numero_musica` VARCHAR(255),
+    `caminho_musica` VARCHAR(255),
 	PRIMARY KEY(`id`)
 );
 
