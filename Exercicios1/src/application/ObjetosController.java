@@ -235,9 +235,12 @@ public class ObjetosController extends MainController{
             TextFieldInformacao3 = new TextField(objetoInformacoes3);
         }
 
-        TextFieldInformacao1.setPrefWidth(LabelInformacao1.getWidth());
-        TextFieldInformacao2.setPrefWidth(LabelInformacao2.getWidth());
-        TextFieldInformacao3.setPrefWidth(LabelInformacao3.getWidth());
+        TextFieldInformacao1.setMinWidth(LabelInformacao1.getWidth());
+        TextFieldInformacao2.setMinWidth(LabelInformacao2.getWidth());
+        TextFieldInformacao3.setMinWidth(LabelInformacao3.getWidth());
+        TextFieldInformacao1.setMinHeight(LabelInformacao1.getHeight());
+        TextFieldInformacao2.setMinHeight(LabelInformacao2.getHeight());
+        TextFieldInformacao3.setMinHeight(LabelInformacao3.getHeight());
 
         addFocusListenerToTextField(TextFieldInformacao1);
         addFocusListenerToTextField(TextFieldInformacao2);
