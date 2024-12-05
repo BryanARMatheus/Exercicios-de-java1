@@ -56,9 +56,9 @@
       </Button>
       <ScrollPane layoutX="14.0" layoutY="58.0" prefHeight="517.0" prefWidth="405.0">
          <content>
-            <VBox fx:id="VBoxListaMusicas" prefHeight="517.0" prefWidth="369.0" />
+            <VBox fx:id="VBoxListaMusicas" prefHeight="517.0" prefWidth="406.0" />
          </content>
       </ScrollPane>
-      <ImageView fx:id="ImageViewMusicaThumb" fitHeight="300.0" fitWidth="300.0" layoutX="789.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ImageViewMusicaThumb" fitHeight="300.0" fitWidth="300.0" layoutX="789.0" layoutY="219.0" pickOnBounds="true" smooth="false" />
    </children>
 </AnchorPane>

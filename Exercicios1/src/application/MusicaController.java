@@ -41,6 +41,9 @@ public class MusicaController extends MainController implements Initializable{
 	private int tamanho;
 	private String artista;
 
+	int i = 0;
+	int numeroDaMusica;
+
 	Connection connection = null;
 	PreparedStatement statement = null;
 	ResultSet resultSet = null;
@@ -81,7 +84,7 @@ public class MusicaController extends MainController implements Initializable{
 		
 		musicas = new ArrayList<File>();
 		
-		diretorio = new File("musica");
+		diretorio = new File("C:\\Users\\Noite\\Desktop\\biewqji\\Exercicios-de-java1\\Exercicios1\\src\\Musica");
 		
 		arquivos = diretorio.listFiles();
 		
@@ -107,8 +110,13 @@ public class MusicaController extends MainController implements Initializable{
 			}
 
 		});
-		atualizarCapaMusica();
-		adicionarMusicasBanco();
+		try {
+			atualizarCapaMusica();
+			adicionarMusicasBanco();
+			criarBotao(VBoxListaMusicas);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		};
 	}
 
 	public void atualizarCapaMusica() {
@@ -119,107 +127,108 @@ public class MusicaController extends MainController implements Initializable{
 				Image capa = (Image) media.getMetadata().get("image");
 
 				ImageViewMusicaThumb.setImage(capa);
-			} else {
-
-				ImageViewMusicaThumb.setImage(new Image(getClass().getResourceAsStream("/imagens/menuImage.png")));
 			}
 		});
 	}
 
 	@FXML
 	void adicionarMusicasBanco(){
-		try {
-		connection = DatabaseConnection.getConnection(true);
-		String query = "INSERT INTO musica (nome,segundos,artista,thumbnail,caminho_musica) VALUES (?,?,?,?,?);";
-
-		PreparedStatement stmInsert = connection.prepareStatement(query);
-
-		String nomeMusica = musicas.get(numeroMusica).getName();
-		double duracaoSegundos = mediaPlayer.getTotalDuration().toSeconds();
-
-
-		String artista = null;
-		String thumbnailPath = null;
-
-		if (media.getMetadata().containsKey("artist")) {
-			artista = (String) media.getMetadata().get("artist");
-		}
-
-		if (media.getMetadata().containsKey("image")) {
-			Image thumbnailImage = (Image) media.getMetadata().get("image");
-			File tempFile = new File("temp_thumbnail.png");
-			ImageIO.write(SwingFXUtils.fromFXImage(thumbnailImage, null), "png", tempFile);
-			thumbnailPath = tempFile.getAbsolutePath();
-		}
-
-		String caminhoMusica = musicas.get(numeroMusica).getAbsolutePath();
-
-		stmInsert.setString(1, nomeMusica);
-		stmInsert.setDouble(2, duracaoSegundos);
-		stmInsert.setString(3, artista);
-		stmInsert.setString(4, thumbnailPath);
-		stmInsert.setString(5, caminhoMusica);
-
-		stmInsert.executeUpdate();
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
+		for(File arquivo: arquivos) {
 			try {
-				if (resultSet != null) resultSet.close();
-				if (statement != null) statement.close();
-				if (connection != null) connection.close();
+				connection = DatabaseConnection.getConnection(true);
+				String query = "INSERT INTO musica (nome,segundos,artista,numero_musica,caminho_musica) VALUES (?,?,?,?,?);";
+
+				Media media = new Media(arquivo.toURI().toString());
+				MediaPlayer tempMediaPlayer = new MediaPlayer(media);
+
+				PreparedStatement stmInsert = connection.prepareStatement(query);
+
+					String nomeMusica = musicas.get(numeroMusica + i).getName();
+					double duracao = tempMediaPlayer.getTotalDuration().toSeconds();
+					int duracaoSegundos = Integer.parseInt(String.valueOf(Math.round(duracao)));
+
+
+					String artista = null;
+					String thumbnailPath = null;
+
+					if (media.getMetadata().containsKey("album")) {
+						artista = (String) media.getMetadata().get("album");
+					}
+
+					if (media.getMetadata().containsKey("image")) {
+						Image thumbnailImage = (Image) media.getMetadata().get("image");
+					}
+
+					String caminhoMusica = musicas.get(numeroMusica).getAbsolutePath();
+
+
+					stmInsert.setString(1, nomeMusica);
+					stmInsert.setInt(2, duracaoSegundos);
+					stmInsert.setString(3, artista);
+					stmInsert.setInt(4, numeroMusica);
+					stmInsert.setString(5, caminhoMusica);
+
+					stmInsert.executeUpdate();
+
+					i++;
 			} catch (SQLException e) {
-				System.out.println("Erro ao fechar recursos: " + e.getMessage());
+				throw new RuntimeException(e);
+			} finally {
+				try {
+					if (resultSet != null) resultSet.close();
+					if (statement != null) statement.close();
+					if (connection != null) connection.close();
+				} catch (SQLException e) {
+					System.out.println("Erro ao fechar recursos: " + e.getMessage());
+				}
 			}
 		}
 	}
 
 	@FXML
-	void criarBotao(TitledPane pane) throws SQLException {
-		for(File arquivo: arquivos) {
-		}
-		try {
-			VBoxListaMusicas.getChildren().clear();
-
-			connection = DatabaseConnection.getConnection(true);
-			String query = "SELECT * FROM musica;";
-
-
-			PreparedStatement stmDelete = connection.prepareStatement(query);
-
-			while (resultSet.next()) {
-
-				String buttonName = null;
-				String musicName = null;
-
-				buttonName = resultSet.getString("nome");
-				musicName = buttonName;
-
-				Button button = new Button(buttonName);
-				button.setPrefWidth(600);
-				button.setStyle(String.format("-fx-font-size: 22;"));
-				button.setAlignment(Pos.CENTER_LEFT);
-				button.setOnAction(event -> tocarBotao(button));
-
-				VBoxListaMusicas.setSpacing(10);
-				VBoxListaMusicas.setStyle(String.format("-fx-background-color: black;"));
-
-				VBoxListaMusicas.getChildren().add(button);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
+	void criarBotao(VBox VBoxListaMusicas) throws SQLException {
 			try {
-				if (resultSet != null) resultSet.close();
-				if (statement != null) statement.close();
-				if (connection != null) connection.close();
+				VBoxListaMusicas.getChildren().clear();
+
+				connection = DatabaseConnection.getConnection(true);
+				String query = "SELECT * FROM musica;";
+
+
+				PreparedStatement stmCriar = connection.prepareStatement(query);
+
+				ResultSet resultSet = stmCriar.executeQuery(query);
+
+				while (resultSet.next()) {
+
+					String buttonName = null;
+					String musicName = null;
+
+					buttonName = resultSet.getString("nome");
+					musicName = buttonName;
+
+					Button button = new Button(buttonName);
+					button.setPrefWidth(600);
+					button.setStyle(String.format("-fx-font-size: 22;"));
+					button.setAlignment(Pos.CENTER_LEFT);
+					button.setOnAction(event -> tocarBotao(button));
+
+					VBoxListaMusicas.setSpacing(10);
+					VBoxListaMusicas.setStyle(String.format("-fx-background-color: black;"));
+
+					VBoxListaMusicas.getChildren().add(button);
+				}
 			} catch (SQLException e) {
-				System.out.println("Erro ao fechar recursos: " + e.getMessage());
+				throw new RuntimeException(e);
+			} finally {
+				try {
+					if (resultSet != null) resultSet.close();
+					if (statement != null) statement.close();
+					if (connection != null) connection.close();
+				} catch (SQLException e) {
+					System.out.println("Erro ao fechar recursos: " + e.getMessage());
+				}
 			}
-		}
+
 	}
 
 	void tocarBotao(Button button){
@@ -228,22 +237,19 @@ public class MusicaController extends MainController implements Initializable{
 		try {
 
 			connection = DatabaseConnection.getConnection(true);
-			String query = "SELECT * FROM musica WHERE nome = ?";
+			String query = "SELECT * FROM musica WHERE nome = '" + nomeMusicaBotao + "';";
 
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 
-			PreparedStatement stmTocar = connection.prepareStatement(query);
-
-			stmTocar.setString(1, nomeMusicaBotao);
-
-			stmTocar.executeQuery();
-
-			ResultSet resultSet = stmTocar.executeQuery(query);
-
-			media = new Media(resultSet.getString("caminho_musica"));
+			resultSet.next();
+			numeroDaMusica = resultSet.getInt("numero_musica");
+			media = new Media(musicas.get(numeroDaMusica).toURI().toString());
 			mediaPlayer = new MediaPlayer(media);
+			tocar();
+			atualizarCapaMusica();
 
 			musicaNome.setText(nomeMusicaBotao);
-			ImageViewMusicaThumb.set(resultSet.getString("thumbnail"));
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
